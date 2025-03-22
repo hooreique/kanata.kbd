@@ -1,0 +1,52 @@
+( defcfg process-unmapped-keys no )
+
+( defsrc
+  esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 del
+  ` 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] \
+  caps a s d f g h j k l ; ' ret
+  lsft z x c v b n m , . / rsft
+  lctl lmet lalt spc ralt rmet rctl
+  up down lft rght home end pgup pgdn
+  kp0 kp1 f20 )
+
+( defalias
+  my_z ( tap-hold-release-timeout 200 400 z lctl z )
+  my_/ ( tap-hold-release-timeout 200 400 / lctl / ) )
+
+( defalias
+  my_lsft ( tap-hold-press 200 200 f21 lsft )
+  my_ralt ( tap-hold-press 200 200 f22 ralt )
+  my_rsft ( tap-hold-press 200 200 f23 rsft )
+  my_rmet ( tap-hold-press 200 200 f24 rmet )
+  my_rctl ( tap-hold-press 200 200 del rctl ) )
+
+( defalias
+  my_esc ( tap-hold-press 200 200 esc ( layer-while-held mod ) )
+  my_spc ( tap-hold-press 200 200 spc ( layer-while-held mod ) ) )
+
+( defalias
+  w_u ( 🖱☸↑ 50 120 )
+  w_d ( 🖱☸↓ 50 120 )
+  w_l ( 🖱☸← 50 120 )
+  w_r ( 🖱☸→ 50 120 ) )
+
+( deflayer base
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  _           q w f p g j l u y ; _ _ _
+  @my_esc     a r s t d h n e i o _ _
+  @my_lsft @my_z x c v b k m _ _ @my_/ @my_rsft
+  _ _ _       _      @my_ralt @my_rmet @my_rctl
+  _ _ _ _ _ _ _ _
+  @my_spc @my_esc ( macro C-\ C-\ ) )
+
+( deflayer mod
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 del
+  caps bspc del  @w_u _    _ _    pgup up   pgdn _ _ _ lrld
+  _    ret  @w_l @w_d @w_r _ home lft  down rght end _ ( multi lsft ret )
+  _ _ _ _ _ _ _ _ _ _ ( multi lalt home ) _
+  _ _ _ _ _ _ _
+  _ _ _ _ _ _ _ _
+  _ _ _ )
