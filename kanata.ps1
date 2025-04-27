@@ -5,7 +5,8 @@
 # If it doesn't start or if another program like Notepad opens instead,
 # it might be because the program associated with the .ps1 extension
 # is not set to:
-# C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+# C:\Program Files\PowerShell\7\pwsh.exe
+# (Install one by winget install Microsoft.PowerShell)
 # If correctly set, simply double-clicking this file should make it work.
 
 Start-Process -WindowStyle Hidden `
